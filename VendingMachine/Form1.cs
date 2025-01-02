@@ -70,8 +70,55 @@ namespace VendingMachine
             // 전투시작 버튼 
             SimulateBattle();
         }
+
+        private void HP_Input_btn_Click(object sender, EventArgs e)
+        {
+            // textBox_HP에서 입력값 가져오기
+            string input = HP_Input.Text;
+
+            // 입력값이 유효한 정수인지 확인
+            if (int.TryParse(input, out int hpValue))
+            {
+                // 플레이어의 HP 증가
+                player.LevelUp(hpValue);
+
+                // 텍스트 박스 초기화
+                HP_Input.Clear();
+            }
+            else
+            {
+                MessageBox.Show("유효한 숫자를 입력해주세요!");
+            }
+        }
+
         
 
+        private void Attack_Point_btn_Click(object sender, EventArgs e)
+        {
+            // textBox_AttackPower에서 입력값 가져오기
+            string inputHP = HP_Input.Text; // HP 값
+            string inputAP = AttackPoint_Input.Text; // 공격력 값
+
+            // 입력값이 유효한지 확인
+            if (int.TryParse(inputHP, out int hpValue) && int.TryParse(inputAP, out int apValue))
+            {
+                // 플레이어의 HP와 AttackPower 증가
+                player.LevelUp(hpValue, apValue);
+
+                // 텍스트 박스 초기화
+                HP_Input.Clear();
+                AttackPoint_Input.Clear();
+            }
+            else
+            {
+                MessageBox.Show("유효한 숫자를 입력해주세요!");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // 캐릭터 기본 클래스
@@ -82,6 +129,11 @@ namespace VendingMachine
         public int AttackPower { get; set; }
 
         public abstract void Attack(Character target);
+
+        public virtual void Talk()
+        {
+            MessageBox.Show($"{Name}가 말을 합니다 !");
+        }
 
         public void TakeDamage(int damage)
         {
@@ -98,6 +150,23 @@ namespace VendingMachine
         {
             MessageBox.Show($"{Name}이(가) {target.Name}을(를) 공격했습니다!");
             target.TakeDamage(AttackPower);
+        }
+        public override void Talk()
+        {
+            MessageBox.Show("캐릭터가 결의를 외칩니다 ");
+        }
+        
+        public void LevelUp(int hp)//hp 설정해주기
+        {
+            Health += hp;
+            MessageBox.Show($"HP가 {hp}만큼 증가하여 {Health}가 되었습니다");
+        }
+
+        public void LevelUp(int hp, int power)// 둘다 설정해주기 
+        {
+            Health += hp;
+            AttackPower += power;
+            MessageBox.Show($"HP가 {hp}, 공격력이 {power}만큼 증가하여 HP: {Health}, 공격력: {AttackPower}이(가) 되었습니다.");
         }
     }
 
@@ -116,6 +185,11 @@ namespace VendingMachine
             int rageDamage = AttackPower * 3; // rage 모드에서의 공격력 3배 
             target.TakeDamage(rageDamage);
             MessageBox.Show($"{Name}이(가) 분노 공격으로 {target.Name}에게 {rageDamage} 데미지를 입혔습니다!");
+        }
+
+        public override void Talk()
+        {
+            MessageBox.Show("몬스터가 캐릭터를 공격 했습니다 !");
         }
     }
 

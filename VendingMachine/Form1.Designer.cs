@@ -33,6 +33,10 @@
             this.button_fight = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.HP_Input = new System.Windows.Forms.TextBox();
+            this.AttackPoint_Input = new System.Windows.Forms.TextBox();
+            this.HP_Input_btn = new System.Windows.Forms.Button();
+            this.Attack_Point_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_PlayerHP
@@ -79,11 +83,51 @@
             this.textBox2.Text = "Player";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // HP_Input
+            // 
+            this.HP_Input.Location = new System.Drawing.Point(43, 341);
+            this.HP_Input.Name = "HP_Input";
+            this.HP_Input.Size = new System.Drawing.Size(100, 25);
+            this.HP_Input.TabIndex = 5;
+            this.HP_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // AttackPoint_Input
+            // 
+            this.AttackPoint_Input.Location = new System.Drawing.Point(43, 388);
+            this.AttackPoint_Input.Name = "AttackPoint_Input";
+            this.AttackPoint_Input.Size = new System.Drawing.Size(100, 25);
+            this.AttackPoint_Input.TabIndex = 6;
+            this.AttackPoint_Input.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // HP_Input_btn
+            // 
+            this.HP_Input_btn.Location = new System.Drawing.Point(190, 341);
+            this.HP_Input_btn.Name = "HP_Input_btn";
+            this.HP_Input_btn.Size = new System.Drawing.Size(106, 25);
+            this.HP_Input_btn.TabIndex = 7;
+            this.HP_Input_btn.Text = "HP_input";
+            this.HP_Input_btn.UseVisualStyleBackColor = true;
+            this.HP_Input_btn.Click += new System.EventHandler(this.HP_Input_btn_Click);
+            // 
+            // Attack_Point_btn
+            // 
+            this.Attack_Point_btn.Location = new System.Drawing.Point(190, 388);
+            this.Attack_Point_btn.Name = "Attack_Point_btn";
+            this.Attack_Point_btn.Size = new System.Drawing.Size(143, 25);
+            this.Attack_Point_btn.TabIndex = 8;
+            this.Attack_Point_btn.Text = "Attack_Point_Input";
+            this.Attack_Point_btn.UseVisualStyleBackColor = true;
+            this.Attack_Point_btn.Click += new System.EventHandler(this.Attack_Point_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Attack_Point_btn);
+            this.Controls.Add(this.HP_Input_btn);
+            this.Controls.Add(this.AttackPoint_Input);
+            this.Controls.Add(this.HP_Input);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button_fight);
@@ -91,6 +135,7 @@
             this.Controls.Add(this.textBox_PlayerHP);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,6 +148,10 @@
         private System.Windows.Forms.Button button_fight;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox HP_Input;
+        private System.Windows.Forms.TextBox AttackPoint_Input;
+        private System.Windows.Forms.Button HP_Input_btn;
+        private System.Windows.Forms.Button Attack_Point_btn;
     }
 }
 
